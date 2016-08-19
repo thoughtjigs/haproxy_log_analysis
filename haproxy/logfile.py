@@ -174,6 +174,16 @@ class Log(object):
                 ip_counter[ip] += 1
         return ip_counter
 
+    def cmd_client_ip_counter(self):
+        """Reports a breakdown of how many requests have been made per client IP.
+        """
+        ip_counter = defaultdict(int)
+        for line in self._valid_lines:
+            ip = line.get_client_ip()
+            if ip is not None:
+                ip_counter[ip] += 1
+        return ip_counter
+
     def cmd_top_ips(self):
         """Returns the top most frequent IPs.
 

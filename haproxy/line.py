@@ -169,6 +169,9 @@ class Line(object):
             return self.captured_request_headers[1:-1]
         return None
 
+    def get_client_ip(self):
+        return self.client_ip
+
     def _parse_line(self, line):
         # remove syslog slug if found
         line = SYSLOG_REGEX.sub('', line)
